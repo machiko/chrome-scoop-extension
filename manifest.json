@@ -1,0 +1,48 @@
+{
+  "manifest_version": 2,
+  "name": "新聞真實性辨識",
+  "description": "協助判別新聞思考",
+  "version": "1.0",
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "background": {
+    "scripts": ["background.js",
+        "js/commandsListener.js"],
+    "persistent": false
+  },
+  "permissions": [
+    "activeTab"
+  ],
+  "content_scripts" : [
+    {
+      "matches" : [
+        "https://tw.news.yahoo.com/*",
+        "*://*.stackoverflow.com/*"
+      ],
+      "js" : [
+        "js/jquery-1.11.0.min.js",
+        "js/alertify.min.js",
+        "js/contentscript.js"
+      ],
+      "css" : [
+        "css/alertify.core.css",
+        "css/alertify.bootstrap.css"
+      ],
+      "run_at" : "document_idle",
+      "all_frames" : false
+    }
+  ],
+  "commands" : {
+    "reload_extension" : {
+      "suggested_key" : {
+        "default" : "Ctrl+Shift+Q",
+        "windows" : "Ctrl+Shift+Q",
+        "mac" : "MacCtrl+Shift+Q",
+        "chromeos" : "Ctrl+Shift+Q",
+        "linux" : "Ctrl+Shift+Q"
+      },
+      "description" : "shortcut for reloading extensions"
+    }
+  }
+}
