@@ -4,7 +4,12 @@
   "description": "協助判別新聞思考",
   "version": "1.0",
   "browser_action": {
-    "default_icon": "icon.png"
+  },
+  "icons":
+  {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
   },
   "background": {
     "scripts": ["background.js",
@@ -22,7 +27,7 @@
       ],
       "js" : [
         "js/jquery-1.11.0.min.js",
-        "js/alertify.min.js",
+        "js/notify.min.js",
         "js/contentscript.js"
       ],
       "css" : [
