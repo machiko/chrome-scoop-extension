@@ -17,13 +17,20 @@
     "persistent": false
   },
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "*://reyes.me/api/*",
+    "*://*.news.yahoo.com/*",
+    "*://www.peoplenews.tw/*",
+    "*://www.commonhealth.com.tw/*",
+    "*://theinitium.com/*"
   ],
   "content_scripts" : [
     {
       "matches" : [
-        "https://tw.news.yahoo.com/*",
-        "*://*.stackoverflow.com/*"
+        "*://*.news.yahoo.com/*",
+        "*://www.peoplenews.tw/*",
+        "*://www.commonhealth.com.tw/*",
+        "*://theinitium.com/*"
       ],
       "js" : [
         "js/jquery-1.11.0.min.js",

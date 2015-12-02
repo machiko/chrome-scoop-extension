@@ -1,10 +1,23 @@
 /* Regex-pattern to check URLs against.
    It matches URLs like: http[s]://[...]stackoverflow.com[...] */
-var urlRegex = /^https?:\/\/(?:[^\.]+\.)?stackoverflow\.com/;
+// var urlRegex = /^https?:\/\/(?:[^\.]+\.)?stackoverflow\.com/;
 
 /* A function creator for callbacks */
 function doStuffWithDOM(domContent) {
     console.log(JSON.parse(domContent));
+    // var target = "https://reyes.me/api/curl?callback=?";
+    // $.ajax({
+    // url: target,
+    // data: {
+    //     url: "http://www.google.com"
+    // },
+    // jsonpCallback: "callback",
+    // dataType: "jsonp",
+    // success: function(data) {
+    //     alert(data);
+    //     console.log(data);
+    // }
+    // });
 }
 
 /* When the browser-action button is clicked... */
