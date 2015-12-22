@@ -22,7 +22,11 @@
     "*://*.news.yahoo.com/*",
     "*://www.peoplenews.tw/*",
     "*://www.commonhealth.com.tw/*",
-    "*://theinitium.com/*"
+    "*://theinitium.com/*",
+    "*://www.setn.com/*",
+    "*://www.appledaily.com.tw/*",
+    "*://news.tvbs.com.tw/*",
+    "*://www.storm.mg/*"
   ],
   "content_scripts" : [
     {
@@ -30,7 +34,11 @@
         "*://*.news.yahoo.com/*",
         "*://www.peoplenews.tw/*",
         "*://www.commonhealth.com.tw/*",
-        "*://theinitium.com/*"
+        "*://theinitium.com/*",
+        "*://www.setn.com/*",
+        "*://www.appledaily.com.tw/*",
+        "*://news.tvbs.com.tw/*",
+        "*://www.storm.mg/*"
       ],
       "js" : [
         "js/jquery-1.11.0.min.js",
