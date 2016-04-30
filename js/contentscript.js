@@ -112,8 +112,11 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
                                         var match_str = news_json.link;
                                         // console.log(news_json.link);
                                         // console.log(result.items[i].link);
-                                        // 去除重複的網址之後，針對網址進行 curl
-                                        if (!match_str.match(result.items[i].link)) {
+                                        var reg_pdf = /.pdf/;
+                                        var reg_doc = /.doc/;
+                                        var reg_ppt = /.ppt/;
+                                        // 去除重複的網址之後，針對網址進行 curl、排除 pdf 檔案
+                                        if (!match_str.match(result.items[i].link) && !reg_pdf.test(result.items[i].link) && !reg_doc.test(result.items[i].link) && !reg_ppt.test(result.items[i].link)) {
                                             // result.items.splice(i, 1);
                                             gcse_url_arr.push((i + 1) + "=>" + result.items[i].link);
                                         }
@@ -162,7 +165,7 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
                                                                 },
                                                                 dataType: 'json',
                                                                 success: function(result) {
-                                                                    show_noty('information', '與「<a href="'+result.url+'" target="_blank">' + result.url + '</a>」比對後的餘弦值 : ' + result.cosine, false);
+                                                                    // show_noty('information', '與「<a href="'+result.url+'" target="_blank">' + result.url + '</a>」比對後的餘弦值 : ' + result.cosine, false);
                                                                     var compare_obj = {};
                                                                     compare_obj.url = result.url;
                                                                     compare_obj.cosine = formatFloat(result.cosine, 2);
@@ -201,12 +204,19 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
                                                         }
 
                                                         console.log(cosine_similar_arr);
+                                                        var inclusive_count = 0;
                                                         for (var i = 0; i < cosine_similar_arr.length; i++) {
                                                             if (cosine_similar_arr[i].cosine > threshold) {
+                                                                inclusive_count ++;
+                                                                console.log(cosine_similar_arr[i].url);
                                                                 // 顯示為非獨家
-                                                                show_noty('error', '非獨家新聞，與「<a href="'+cosine_similar_arr[i].url+'" target="_blank">相似', false);
+                                                                show_noty('error', '非獨家新聞，與「<a href="'+cosine_similar_arr[i].url+'" target="_blank">' + cosine_similar_arr[i].url + '</a>」相似，餘弦值為=>' + cosine_similar_arr[i].cosine, false);
                                                             }
+                                                        }
 
+                                                        if (inclusive_count == 0) {
+                                                            // 顯示為非獨家
+                                                                show_noty('success', '此篇為獨家新聞', false);
                                                         }
                                                         //----- step4. 針對回傳的結果進行 cosine similar algorithm 相似性比對 end -----/
                                                     }

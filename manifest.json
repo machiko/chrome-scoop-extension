@@ -43,7 +43,8 @@
       "js" : [
         "js/jquery-1.11.0.min.js",
         "js/noty/packaged/jquery.noty.packaged.min.js",
-        "js/contentscript.js"
+        "js/contentscript.js",
+        "js/core.js"
       ],
       "css" : [
         "css/buttons.css",
